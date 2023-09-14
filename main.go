@@ -1,17 +1,57 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
 
 	"encoding/base64"
 	b64 "encoding/base64"
-	"encoding/json"
 
 	onboardingv1 "github.com/anzx/apis-go/ribbon/service/onboarding/v1"
 	"google.golang.org/protobuf/proto"
 )
+
+type country struct {
+	regionCode string
+	regionName string
+}
+
+var countries = []*country{
+	{
+		regionCode: "EGY",
+		regionName: "Egypt",
+	},
+	{
+		regionCode: "SIN",
+		regionName: "Singapore",
+	},
+	{
+		regionCode: "AUS",
+		regionName: "Australia",
+	},
+	{
+		regionCode: "USA",
+		regionName: "United States",
+	},
+	{
+		regionCode: "FJI",
+		regionName: "Fiji",
+	},
+	{
+		regionCode: "VNA",
+		regionName: "Vietnam",
+	},
+	{
+		regionCode: "THA",
+		regionName: "Thailand",
+	},
+	{
+		regionCode: "IND",
+		regionName: "India",
+	},
+}
 
 func main() {
 	content, err := os.ReadFile("message.txt")
@@ -26,6 +66,15 @@ func main() {
 	if err := proto.Unmarshal(dst, customerState); err != nil {
 		fmt.Println(err)
 	}
+	//taxResidencies := customerState.GetTaxResidencies()
+	//for i, t := range taxResidencies {
+	//	t.RegionCode = countries[i].regionCode
+	//	t.RegionName = countries[i].regionName
+	//}
+	//cs, err := proto.Marshal(customerState)
+	//result := b64.StdEncoding.EncodeToString(cs)
+	//fmt.Println(result)
+
 	//Converting to json
 	customerStateJSON, err := json.MarshalIndent(customerState, "", "  ")
 	if err != nil {
