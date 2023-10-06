@@ -1,0 +1,28 @@
+{
+  "packageCode": "ANZPLUS01",
+  "packageName": "ANZ Plus",
+  "packageDescription": "Deposit package for Beta launch with a single Transact01, a single Saving01, and a Visa Debit Consumer Standard Card attached as a service to the Transact01",
+  "packageId": "6688223654",
+  "accounts": [
+    {
+      "productCode": "TRANSACT01",
+      "accountNumber": "99999999"
+    },
+    {
+      "productCode": "SAVING01",
+      "accountNumber": "99999999"
+    }
+  ],
+  "customerIdentifiers": [
+    {
+      "relationshipType": "SOL",
+      "ocvId": "1000997907",
+      "personaId": "2d3827d9-76b5-4c2b-a55f-f411d736e08c",
+      "personId": "03b3f971-efd7-41d5-b423-45ab37c3d749",
+      "firstName": "Test QA",
+      "email": "test.user@anz.com",
+      "mobileNumber": "+61413133131",
+      "residentialPostcode": "3029"
+    }
+  ]
+}
